@@ -1,0 +1,8 @@
+/build
+*.o
+*.a
+*.so
+*.dylib
+/venv
+__pycache__
+/docker
