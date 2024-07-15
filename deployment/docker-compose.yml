@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  qkdc:
+    build: .
+    container_name: qkdc
+    volumes:
+      - ./quantum_cryptography:/app
+    command: bash -c "cd /app && ./main"
+  smpc:
+    build: .
+    container_name: smpc
+    volumes:
+      - ./smpc:/app
+    command: bash -c "cd /app && ./secure_computation"
+  config:
+    image: python:3.8-slim
+    container_name: config
+    volumes:
+      - ./config:/app
+    command: bash -c "cd /app && python config_parser.py"
