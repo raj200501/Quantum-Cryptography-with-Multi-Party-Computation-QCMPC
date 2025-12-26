@@ -146,3 +146,31 @@ The SMPC protocol enables secure computations across multiple parties. Operation
 ### Secure Computation
 The secure computation module utilizes the SMPC protocol to perform operations on encrypted data. This ensures that data remains confidential while allowing meaningful computations to be performed.
 
+
+## ✅ Verified Quickstart
+
+The following commands were run in a clean environment to verify the project works as described:
+
+```sh
+./scripts/run_simulation.sh
+```
+
+To run the smoke test:
+
+```sh
+./scripts/smoke_test.sh
+```
+
+## Troubleshooting
+
+- **`./scripts/run_simulation.sh: Permission denied`**
+  Ensure the script is executable:
+  ```sh
+  chmod +x scripts/run_simulation.sh
+  ```
+- **`yaml-cpp` headers not found when compiling**
+  This repository now includes a minimal `yaml-cpp` compatibility header under `yaml-cpp/yaml.h` so no external dependency is required for the provided `config/config.yaml`.
+- **`docker-compose` fails to find a compose file**
+  The compose file is located at `deployment/docker-compose.yml`. The deploy script now uses it automatically if a root-level compose file is not present.
+- **`docker-compose: command not found`**
+  Install Docker Desktop (or Docker Engine + Compose plugin) and ensure `docker-compose` is available on your PATH.
