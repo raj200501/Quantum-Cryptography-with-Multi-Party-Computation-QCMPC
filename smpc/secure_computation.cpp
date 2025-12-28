@@ -1,6 +1,7 @@
 #include "secure_computation.h"
 #include "smpc_protocol.h"
 #include <iostream>
+#include <fstream>
 
 SecureComputation::SecureComputation(int num_parties) : num_parties(num_parties) {
     smpc_protocol = new SMPCProtocol(num_parties);
@@ -38,4 +39,20 @@ void SecureComputation::execute_protocols() {
         std::cout << val << " ";
     }
     std::cout << std::endl;
+
+    std::ofstream result_file("smpc_results.txt");
+    result_file << "Reconstructed Secret: ";
+    for (const int &val : reconstructed_secret) {
+        result_file << val << " ";
+    }
+    result_file << "\nSecure Addition Result: ";
+    for (const int &val : sum) {
+        result_file << val << " ";
+    }
+    result_file << "\nSecure Multiplication Result: ";
+    for (const int &val : product) {
+        result_file << val << " ";
+    }
+    result_file << std::endl;
+    result_file.close();
 }
